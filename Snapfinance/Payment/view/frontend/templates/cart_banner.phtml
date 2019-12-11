@@ -1,0 +1,45 @@
+<div class="snap-learn-wrap">
+	<a class="snap-banner" id="snap-cartbanner">
+        <img alt-text="Snap Finance Banner" src="<?php echo $block->getBanner();?>"/>
+    </a>
+</div>
+<div class="snap-finance-modal">
+        <div class="modal-wrap">
+            <div class="popup-header">
+                <a href="javascript:void(0)" class="btn-close"><img src="<?php echo $block->getViewFileUrl('Snapfinance_Payment::images/close-icon.svg');?>" alt="close-btn"></a>
+            </div>    
+            <div class="popup-body">
+                <figure><img src="<?php echo $block->getSnapLogo();?>" alt="Blue-Snap-logo"></figure>
+                <h4><?php echo  __('Financing in snap! Apply now and get up to $3000 to use today at checkout.');?></h4>
+                <ul class="finance-key-points">
+                    <li><?php echo __('Pay over 12 months');?></li>
+                    <li><?php echo __('100 day payoff option');?></li>
+                    <li><?php echo __('Easy payments on your paydays');?></li>
+                </ul>
+                <a href="<?php echo $block->getSnapUrl();?>" class="btn-apply" target="_blank"><?php echo __('Apply');?></a>
+            </div>
+        </div>
+</div>
+<script>
+    require(
+        [
+            'jquery',
+            'Magento_Ui/js/modal/modal'
+        ],
+        function(
+            $,
+            modal
+        ) {
+            $("#snap-cartbanner").click(function() {
+                $(".snap-finance-modal").addClass("open");
+            });
+            $(".btn-close").click(function() {
+                $(".snap-finance-modal").removeClass("open");
+            });
+            $(".btn-apply").click(function() {
+                $(".snap-finance-modal").removeClass("open");
+            });
+
+        }
+    );
+</script>

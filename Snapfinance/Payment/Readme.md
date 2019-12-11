@@ -4,7 +4,7 @@
 Snap Finance checkout provides eCommerce merchants with a set of APIs to offer an in-context finance option to their customers at the time of checkout. 
 The Snap JavaScript library, aka "snap-sdk (client)", is a script provided to eCommerce merchants as "snap-sdk.js", for inclusion in their website. The script enables the merchant to include a Snap Checkout button on their website, enabling their customers to use Snap to finance their online purchase.
 
-Snap Financeís Magento checkout plugin offers an easy way to enable your Magento powered eCommerce store to offer Lease to Buy finance options.
+Snap Finance‚Äôs Magento checkout plugin offers an easy way to enable your Magento powered eCommerce store to offer Lease to Buy finance options.
 
 ## Installation
 
@@ -20,19 +20,19 @@ Snap Financeís Magento checkout plugin offers an easy way to enable your Magento
 
 2. Configure Plugin:- 
 	1. Login to Magento admin and open Magento Settings. 
-	2. Click on General tab and then on ëSnap Finance Checkoutí plugin.
-		1. Enable/Disable ñ Select Yes to enable the module.
-		2. Mode-  ìStageî for sandbox/test operation and ìProductionî for live operation.
+	2. Click on General tab and then on ‚ÄòSnap Finance Checkout‚Äô plugin.
+		1. Enable/Disable ‚Äì Select Yes to enable the module.
+		2. Mode-  ‚ÄúStage‚Äù for sandbox/test operation and ‚ÄúProduction‚Äù for live operation.
 		3. Merchant key- Configure Merchant Key URL for Snap Finance.
 		4. Logo Style- There are 5 different logo style available, you can display it on checkout page.
-		5. Banner Style ñ Select Banner style you want to get appear on your website pages / product pages etc.
+		5. Banner Style ‚Äì Select Banner style you want to get appear on your website pages / product pages etc.
    	3. If you want to enable Snap finance checkout payment method follow the below the step:
 	       1. Open the Magento Store Configration
 	       2. Click on Sales tab then click on Payment Methods and then click on 'Snap Finance Checkout'.
-		  1. Enable/Disable ñ Select Yes to enable the module
-		  2. Mode-  ìStageî for sandbox/test operation and ìProductionî for live operation.
-		  3. Client ID ñ Enter Client ID which you will receive from your developer account on Snap Finance Website.
-	 	  4. Client Secret Key ñ Enter Client Secret Key which you will receive from your developer account on Snap Finance Website.
+		  1. Enable/Disable ‚Äì Select Yes to enable the module
+		  2. Mode-  ‚ÄúStage‚Äù for sandbox/test operation and ‚ÄúProduction‚Äù for live operation.
+		  3. Client ID ‚Äì Enter Client ID which you will receive from your developer account on Snap Finance Website.
+	 	  4. Client Secret Key ‚Äì Enter Client Secret Key which you will receive from your developer account on Snap Finance Website.
 	 	  5. Minimum Order total- You can set the minimum order value to use the Snap Finance Payment method.
 	 	  6. Maximum Order total- You can set the maximum order value to use the Snap Finacne Payment method.
 	 	  7. Display on Shopping Cart: If you want to to show checkout button on Cart page Select 'Yes'

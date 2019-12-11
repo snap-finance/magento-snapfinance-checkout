@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Snapfinance_Payment::css/style.css"/>
+    </head>
+    <body>
+         <referenceContainer name="header.container">
+            <block class="Snapfinance\Payment\Block\Banner" name="snap_banner_center_top" template="Snapfinance_Payment::banner.phtml" before="-">
+                <arguments>
+                    <argument name="page_section" xsi:type="string">allpage</argument>
+                    <argument name="position" xsi:type="number">0</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+        <referenceContainer name="columns">
+            <block class="Snapfinance\Payment\Block\Banner" name="snap_banner_center_bottom" template="Snapfinance_Payment::banner.phtml" after="-">
+                <arguments>
+                    <argument name="page_section" xsi:type="string">allpage</argument>
+                    <argument name="position" xsi:type="number">1</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

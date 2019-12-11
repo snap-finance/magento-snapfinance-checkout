@@ -1,0 +1,53 @@
+<div class="snap-finance-modal">
+    <div class="modal-wrap">
+        <div class="popup-header">
+            <a href="javascript:void(0)" data-bind="click: btnClose" class="btn-close"><img data-bind="attr: {src: getcloseImgSrc(), alt: $t('Close Button')}"></a>
+        </div>	
+        <div class="popup-body">
+            <figure><img data-bind="attr: {src: getSnapLogoSrc(), alt: $t('Snap payment')}"></figure>
+            <h4 data-bind="i18n: 'Financing in snap! Apply now and get up to $3000 to use today at checkout.'"></h4>
+            <ul class="finance-key-points">
+                <li data-bind="i18n: 'Pay over 12 months'"></li>
+                <li data-bind="i18n: '100 day payoff option'"></li>
+                <li data-bind="i18n: 'Easy payments on your paydays'"></li>
+            </ul>
+            <a data-bind="attr: { href: getSnapUrl(),target:'_blank'},click: btnApply" class="btn-apply"><!-- ko i18n: 'Apply'--><!-- /ko --></a>
+         </a>
+        </div>
+    </div>
+</div>
+<div class="payment-method" data-bind="css: {'_active': (getCode() == isChecked())}">
+    <div class="payment-method-title field choice">
+        <input type="radio"
+               name="payment[method]"
+               class="radio"
+               data-bind="attr: {'id': getCode()}, value: getCode(), checked: isChecked, click: selectPaymentMethod, visible: isRadioButtonVisible()"/>
+        <label data-bind="attr: {'for': getCode()}" class="label">
+
+            <img data-bind="attr: {src: getSnapLogoSrc(), alt: $t('Snap payment')}" class="payment-icon snap-payment-icon"/>
+            <span data-bind="text: getTitle()"></span></label>
+    </div>
+    <div class="payment-method-content">
+        <!-- ko foreach: getRegion('messages') -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+        <!--/ko-->
+        <div class="payment-method-billing-address">
+            <!-- ko foreach: $parent.getRegion(getBillingAddressFormName()) -->
+            <!-- ko template: getTemplate() --><!-- /ko -->
+            <!--/ko-->
+        </div>
+        <div class="checkout-agreements-block">
+            <!-- ko foreach: $parent.getRegion('before-place-order') -->
+                <!-- ko template: getTemplate() --><!-- /ko -->
+            <!--/ko-->
+        </div>
+        <div class="actions-toolbar">
+            <div class="snap-banner-checkout-container">
+                <a class="snap-banner-checkout action primary" id="snap-banner-checkout" data-bind="click: snapClick">
+                   <!-- ko i18n: 'Apply With Snap Finance'--><!-- /ko -->
+                </a>
+            </div>
+            
+        </div>
+    </div>
+</div>
