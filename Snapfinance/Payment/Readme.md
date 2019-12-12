@@ -37,7 +37,8 @@ Snap Finance’s Magento checkout plugin offers an easy way to enable your Magen
 	    7.  Minimum Order total - You can set the minimum order value to use the Snap Finance Payment method.
 	    8.  Maximum Order total - You can set the maximum order value to use the Snap Finance Payment method.
 	    9.  Display on Shopping Cart: If you want to to show checkout button on Cart page Select 'Yes'.
-	   10. Option to change button style in Admin Setting [Color : Dark / Light, Shape : Pill/ Rounded/ Rectangle, Height : 25-55 ( default 55)]
+	 10.  Option to change button style in Admin Setting [Color : Dark / Light, Shape : Pill/ Rounded/ Rectangle, Height : 25-55 ( default 55)]
+
 
 3. After the Done all settings you have to run following command:
     	1. php bin/magneto cache:flush	
