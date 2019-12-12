@@ -64,10 +64,11 @@ define(
                 },
                 RenderSnapMark : function()
                 {
+                    console.log(window.checkoutConfig.payment['snap_payment']);
                     snap.checkoutMark({
                         style: {
                             color: 'dark',
-                            height: 55
+                            height: window.checkoutConfig.payment['snap_payment'].button_height
                         }
                     }).render();
                     
@@ -91,9 +92,9 @@ define(
                                     //token: access_token,
                             
                                     style: {
-                                        color: 'dark',
-                                        shape: 'pill',
-                                        height: 55
+                                        color: window.checkoutConfig.payment['snap_payment'].button_color,
+                                        shape: window.checkoutConfig.payment['snap_payment'].button_shape,
+                                        height: window.checkoutConfig.payment['snap_payment'].button_height
                                     },
                             
                                     onInit(data, actions) {

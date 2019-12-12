@@ -112,6 +112,18 @@
                     <label>Maximum Order Total</label>
                     <frontend_class>validated-number</frontend_class>
                 </field>
+                <field id="button_color" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Checkout Button Color</label>
+                     <source_model>Snapfinance\Payment\Model\Config\Source\Color</source_model>
+                </field>
+                <field id="button_shape" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Checkout Button Shape</label>
+                     <source_model>Snapfinance\Payment\Model\Config\Source\Shape</source_model>
+                </field>
+                <field id="button_height" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Checkout Button Height</label>
+                    <source_model>Snapfinance\Payment\Model\Config\Source\Height</source_model>
+                </field>
                 <field id="sort_order" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Sort Order</label>
                     <frontend_class>validated-number</frontend_class>

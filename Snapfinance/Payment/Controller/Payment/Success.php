@@ -63,32 +63,14 @@ class Success extends Action
     public function execute()
     {
         $application_id = $this->getRequest()->getParam('application_id');
-        if ($application_id) {
-            $this->checkout->place($application_id);
-            $this->checkoutSession->clearHelperData();
-
-            $quoteId = $this->quote->getId();
-            $this->checkoutSession->setLastQuoteId($quoteId)->setLastSuccessQuoteId($quoteId);
-
-            $order = $this->checkout->getOrder();
-            if ($order) {
-                $this->checkoutSession->setLastOrderId($order->getId())
-                    ->setLastRealOrderId($order->getIncrementId())
-                    ->setLastOrderStatus($order->getStatus());
-            }
-            $this->_eventManager->dispatch(
-                'snap_place_order_success',
-                ['order' => $order, 'quote' => $this->quote ]
-            );
-            $this->_redirect('checkout/onepage/success');
-            return;
-            /* try {
+        try{
+            if ($application_id) {
                 $this->checkout->place($application_id);
                 $this->checkoutSession->clearHelperData();
-
+    
                 $quoteId = $this->quote->getId();
                 $this->checkoutSession->setLastQuoteId($quoteId)->setLastSuccessQuoteId($quoteId);
-
+    
                 $order = $this->checkout->getOrder();
                 if ($order) {
                     $this->checkoutSession->setLastOrderId($order->getId())
@@ -101,19 +83,13 @@ class Success extends Action
                 );
                 $this->_redirect('checkout/onepage/success');
                 return;
-            } catch (LocalizedException $e) {
-                $this->messageManager->addExceptionMessage(
-                    $e,
-                    $e->getMessage()
-                );
-                $this->_redirect('checkout/cart');
-            } catch (\Exception $e) {
-                $this->messageManager->addExceptionMessage(
-                    $e,
-                    __('We can\'t place the order.')
-                );
-                $this->_redirect('checkout/cart');
-            } */
-        }
+            }
+        }catch (\Exception $e) {
+            $this->messageManager->addExceptionMessage(
+                $e,
+                __('We can\'t place the order.')
+            );
+            $this->_redirect('checkout/cart');
+        }  
     }
 }

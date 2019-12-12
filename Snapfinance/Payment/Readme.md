@@ -1,4 +1,4 @@
-# Magento checkout plugin
+﻿# Magento checkout plugin
 ## Description
 
 Snap Finance checkout provides eCommerce merchants with a set of APIs to offer an in-context finance option to their customers at the time of checkout. 
@@ -26,17 +26,18 @@ Snap Finance’s Magento checkout plugin offers an easy way to enable your Magen
 		3. Merchant key- Configure Merchant Key URL for Snap Finance.
 		4. Logo Style- There are 5 different logo style available, you can display it on checkout page.
 		5. Banner Style – Select Banner style you want to get appear on your website pages / product pages etc.
-   	3. If you want to enable Snap finance checkout payment method follow the below the step:
-	       1. Open the Magento Store Configration
-	       2. Click on Sales tab then click on Payment Methods and then click on 'Snap Finance Checkout'.
-		  1. Enable/Disable – Select Yes to enable the module
-		  2. Mode-  “Stage” for sandbox/test operation and “Production” for live operation.
-		  3. Client ID – Enter Client ID which you will receive from your developer account on Snap Finance Website.
-	 	  4. Client Secret Key – Enter Client Secret Key which you will receive from your developer account on Snap Finance Website.
-	 	  5. Minimum Order total- You can set the minimum order value to use the Snap Finance Payment method.
-	 	  6. Maximum Order total- You can set the maximum order value to use the Snap Finacne Payment method.
-	 	  7. Display on Shopping Cart: If you want to to show checkout button on Cart page Select 'Yes'
-
+   	
+	3.  If you want to enable Snap finance checkout payment method follow the below the step:
+	    1.  Open the Magento Store Configuration
+	    2.  Click on Sales tab then click on Payment Methods and then click on 'Snap Finance Checkout'.
+	    3.  Enable/Disable - Select Yes to enable the module
+	    4.  Mode - 'Stage' for sandbox/test operation and 'Production' for live operation.
+	    5.  Client ID - Enter Client ID which you will receive from your developer account on Snap Finance Website.
+	    6.  Client Secret Key - Enter Client Secret Key which you will receive from your developer account on Snap Finance Website.
+	    7.  Minimum Order total - You can set the minimum order value to use the Snap Finance Payment method.
+	    8.  Maximum Order total - You can set the maximum order value to use the Snap Finance Payment method.
+	    9.  Display on Shopping Cart: If you want to to show checkout button on Cart page Select 'Yes'
+	    10.Action Button Changes in Admin Setting [Color : Dark / Light , Shape : Pill /Rounded/Rectangle ,Height : 25-55 ( default 55)]
 
 3. After the Done all settings you have to run following command:
     	1. php bin/magneto cache:flush	

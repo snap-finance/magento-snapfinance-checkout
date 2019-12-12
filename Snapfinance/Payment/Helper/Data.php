@@ -94,6 +94,15 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
 
     public function IsrequiredbillingAddress()
     {
-        return $this->scopeConfig->getValue('payment/' .ConfigProvider::CODE. '/' . 'requireBillingAddress',  ScopeInterface::SCOPE_WEBSITE);
+        return true;
+        //return $this->scopeConfig->getValue('payment/snap_payment/requireBillingAddress',  ScopeInterface::SCOPE_WEBSITE);
+    }
+
+    public function getButtonStyle($code)
+    {
+        return  $this->scopeConfig->getValue(
+            'payment/snap_payment/' . $code,
+            ScopeInterface::SCOPE_WEBSITE
+        );
     }
 }

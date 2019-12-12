@@ -29,6 +29,9 @@
                 <model>Snapfinance\Payment\Model\PaymentMethod</model>
                 <title>Snap Payment</title>
                 <mode>stage</mode>
+                <button_color>dark</button_color>
+                <button_shape>rect</button_shape>
+                <button_height>55</button_height>
                 <minimum_order_total>0.01</minimum_order_total>
                 <maximum_order_total>10000</maximum_order_total>
                 <enabled_checkout_button>0</enabled_checkout_button>
