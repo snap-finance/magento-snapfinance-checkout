@@ -38,8 +38,9 @@ Pull the Snap Finance checkout extension from Github and follow the below step:
     6.  Client Secret Key - Enter Client Secret Key which you will receive from your developer account on Snap Finance Website.
     7.  Minimum Order total - You can set the minimum order value to use the Snap Finance Payment method.
     8.  Maximum Order total - You can set the maximum order value to use the Snap Finance Payment method.
-    9.  Display on Shopping Cart: If you want to to show checkout button on Cart page Select 'Yes'
-    10.Action Button Changes in Admin Setting [Color : Dark / Light, Shape : Pill/ Rounded/ Rectangle, Height : 25-55 ( default 55)]
+    9.  Display on Shopping Cart: If you want to to show checkout button on Cart page Select 'Yes'.
+   10. Action Button Changes in Admin Setting [Color : Dark / Light, Shape : Pill/ Rounded/ Rectangle, Height : 25-55 ( default 55)]
+
 	
 
 3.  After the Done all settings you have to run following command:
