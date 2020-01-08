@@ -1,10 +1,9 @@
 define([
     "jquery",
     'uiElement',
-    "snap",
     "Snapfinance_Payment/js/action/snapaction",
     "Snapfinance_Payment/js/action/initAction"
-], function ($,Component,snapjs,snapaction,initAction) {
+], function ($,Component,snapaction,initAction) {
     'use strict';
 
     var checkoutConfig = window.checkoutConfig;

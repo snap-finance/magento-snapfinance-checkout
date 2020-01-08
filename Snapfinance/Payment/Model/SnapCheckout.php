@@ -83,28 +83,13 @@ class SnapCheckout implements SnapCheckoutInterface
 
         $response = [];
         $response['shipping_address'] = $shippingAddress->getData(); 
-        /* if ($discountAmount > 0.001) {
-            $discountDescription = $shippingAddress->getDiscountDescription();
-            $discountDescription = ($discountDescription) ? sprintf(__('Discount (%s)'), $discountDescription) :
-                sprintf(__('Discount'));
-            $response['discounts'][$discountDescription] = [
-                'discount_amount' => Util::formatToCents($discountAmount)
-            ];
-        } */
+       
         try {
             $country = $this
                 ->quote
                 ->getBillingAddress()
                 ->getCountry();
-            /* $result = $this->quote
-                ->getPayment()
-                ->getMethodInstance()
-                ->canUseForCountry($country);
-            if (!$result) {
-                throw new \Magento\Framework\Exception\LocalizedException(
-                    __('Your billing country isn\'t allowed by Affirm.')
-                );
-            } */
+           
         } catch (Exception $e) {
             return $e->getMessage();
         }

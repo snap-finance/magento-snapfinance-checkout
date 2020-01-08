@@ -1,7 +1,6 @@
 define(
     [
         'jquery',
-        'snap',
         'Magento_Checkout/js/view/payment/default',
         'Snapfinance_Payment/js/action/snapaction',
         'Snapfinance_Payment/js/model/snapModel',
@@ -11,36 +10,13 @@ define(
         'Magento_Ui/js/model/messages',
         'mage/storage',
     ],
-    function ($,snapjs,Component,snapaction,snapModel,initAction,quote,paymentAction,Messages,storage) {
+    function ($,Component,snapaction,snapModel,initAction,quote,paymentAction,Messages,storage) {
         'use strict';
  
         return Component.extend(
             {
                 defaults: {
                     template: 'Snapfinance_Payment/payment/snap_payment'
-                },
-                getSnapLogoSrc: function () {
-                    return window.checkoutConfig.payment['snap_payment'].logoSrc;
-                },
-                getcloseImgSrc: function () {
-                    return window.checkoutConfig.payment['snap_payment'].closeimage;
-                },
-                getSnapUrl: function () {
-                    return window.checkoutConfig.payment['snap_payment'].snap_url;
-                },
-                snapClick : function () {
-                    $(".snap-finance-modal").addClass("open");
-                },
-                btnClose : function () {
-                    $(".snap-finance-modal").removeClass("open");
-                },
-                btnApply : function () {
-                    $(".snap-finance-modal").removeClass("open");
-                    return true;
-                },
-                callUrl : function () {
-                    alert("Default action in Click Binding is allowed here !!! You are redirected to link.");
-                     return true;
                 },
                 initialize: function () {
                     var _self = this;
@@ -85,6 +61,7 @@ define(
                             $.when(paymentAction(_self.messageContainer, {'method': _self.getCode()})).done(function() {
                                 var order_data = JSON.parse(response);
                                 transaction = snapModel.getData(order_data.order_increment_id);
+                                console.log(transaction,"transaction");
                                 snap.init(access_token);
                                 snap.checkoutButton({
                                     // Merchant site developer supplies the JWT obtained through Auth0 authentication

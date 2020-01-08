@@ -88,12 +88,9 @@ class ConfigProvider implements ConfigProviderInterface
             'payment' => array(
                 self::CODE => array(
                     'payment_code'=> self::CODE,
-                    'logoSrc' => $this->_assetRepo->getUrl($this->helper->getLogo()),
-                    'snap_url'=> $this->helper->getSnapUrl(),
                     'button_color'=> $this->helper->getButtonStyle('button_color'),
                     'button_shape'=> $this->helper->getButtonStyle('button_shape'),
                     'button_height'=> $this->helper->getButtonStyle('button_height'),
-                    'closeimage' => $this->_assetRepo->getUrl('Snapfinance_Payment::images/close-icon.svg'),
                     'snap_payment_url' => [
                         'success_url' => $this->urlBuilder
                                 ->getUrl('snap/payment/success', ['_secure' => true]),

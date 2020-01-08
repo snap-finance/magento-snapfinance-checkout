@@ -32,7 +32,7 @@ class Index extends Action
             $url = $this->helper->getAPIHost();
             $data =array('client_id'=>$this->helper->GetClientID(),
                         'client_secret'=>$this->helper->GetClientSecret(),
-                        'audience'=>'https://api-sandbox.snapfinance.com/checkout/v2',
+                        'audience'=>$this->helper->getAPIAudiance(),
                         'grant_type'=>'client_credentials');
             $params = json_encode($data);
             //print_r($params);die;

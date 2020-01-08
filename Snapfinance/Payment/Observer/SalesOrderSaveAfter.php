@@ -18,22 +18,24 @@ class SalesOrderSaveAfter implements ObserverInterface
         \Magento\Framework\HTTP\Client\Curl $curl,
         \Snapfinance\Payment\Helper\Data $data,
         \Magento\Framework\Controller\Result\JsonFactory $resultJsonFactory,
-        \Magento\Sales\Api\Data\TransactionSearchResultInterfaceFactory $transactions
+        \Magento\Sales\Api\Data\TransactionSearchResultInterfaceFactory $transactions,
+        \Psr\Log\LoggerInterface $logger
     ) {
         $this->orderRepository = $orderRepository;
         $this->curlClient = $curl;
         $this->helper = $data;
         $this->resultJsonFactory = $resultJsonFactory;
         $this->transactions = $transactions;
+        $this->_logger = $logger;
     }
 
     public function execute(\Magento\Framework\Event\Observer $observer)
     {
         $order = $observer->getEvent()->getOrder();
         $order_id = $order->getId();
-          $payment = $order->getPayment();
-          $method = $payment->getMethodInstance();
-          $methodCode = $method->getCode();
+        $payment = $order->getPayment();
+        $method = $payment->getMethodInstance();
+        $methodCode = $method->getCode();
         if($order->getState() == "complete" && $methodCode == "snap_payment")
         { 
             $order_id = $order->getId();
@@ -41,7 +43,7 @@ class SalesOrderSaveAfter implements ObserverInterface
             $url = $this->helper->getAPIHost();
             $data =array('client_id'=>$this->helper->GetClientID(),
                         'client_secret'=>$this->helper->GetClientSecret(),
-                        'audience'=>'https://api-sandbox.snapfinance.com/v2/internal',
+                        'audience'=>$this->helper->getAPIAudiance(),
                         'grant_type'=>'client_credentials');
             $params = json_encode($data);
         
@@ -63,13 +65,16 @@ class SalesOrderSaveAfter implements ObserverInterface
                 curl_setopt($ch, CURLOPT_HEADER,1);
                 curl_setopt($ch, CURLOPT_FOLLOWLOCATION,1);
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
-                curl_setopt($ch, CURLOPT_TIMEOUT, 60);
+                curl_setopt($ch, CURLOPT_TIMEOUT, 180);
                 $header[] = 'Content-Type: application/json';
                 $header[] = "Authorization : Bearer ".$response['access_token'];
                 curl_setopt($ch, CURLOPT_HTTPHEADER,$header);
                 $retValue = curl_exec($ch);
                 $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
                 $error_msg = curl_error($ch);
+               
+                $this->_logger->info('Snap_log', array($retValue)); 
+                $this->_logger->info('Snap_log', array($error_msg)); 
                 curl_close($ch);
             } catch (LocalizedException $e) {
                

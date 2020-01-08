@@ -1,28 +1,6 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
     <default>
-        <snap>
-            <general>
-                <enabled>0</enabled>
-                <mode>stage</mode>
-                <logo_style>logo_btn01</logo_style>
-            </general>
-            <snap_homepage>
-                <enabled>1</enabled>
-                <position>0</position>
-                <banner_style>ecomm_btnt01</banner_style>
-            </snap_homepage>
-            <snap_allpage>
-                <enabled>1</enabled>
-                <position>0</position>
-                <banner_style>ecomm_btnt01</banner_style>
-            </snap_allpage>
-            <snap_checkout_cart>
-                <enabled>1</enabled>
-                <position>center-top</position>
-                <banner_style>ecomm_enbanner01</banner_style>
-            </snap_checkout_cart>
-        </snap>
         <payment>
             <snap_payment>
                 <active>0</active>
@@ -34,8 +12,6 @@
                 <button_height>55</button_height>
                 <minimum_order_total>0.01</minimum_order_total>
                 <maximum_order_total>10000</maximum_order_total>
-                <enabled_checkout_button>0</enabled_checkout_button>
-                <display_on_shopping_cart>1</display_on_shopping_cart>
             </snap_payment>
         </payment>
     </default>
