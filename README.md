@@ -59,3 +59,8 @@ Pull the Snap Finance checkout extension from Github and follow the below step:
 ### 1.0.0
 
 -   Initial Release
+
+### 1.0.1
+
+-   Updated Admin flow 	
+-   Minor bug fixes
