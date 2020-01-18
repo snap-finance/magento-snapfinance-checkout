@@ -40,6 +40,7 @@ Pull the Snap Finance checkout extension from Github and follow the below step:
     8.  Maximum Order total - You can set the maximum order value to use the Snap Finance Payment method.
     9.  Display on Shopping Cart: If you want to to show checkout button on Cart page Select 'Yes'.
    10. Option to change button style in Admin Setting [Color : Dark / Light, Shape : Pill/ Rounded/ Rectangle, Height : 25-55 ( default 55)]
+   11.  Updated Admin setting as per payment flow.
 
 	
 
@@ -60,7 +61,3 @@ Pull the Snap Finance checkout extension from Github and follow the below step:
 
 -   Initial Release
 
-### 1.0.1
-
--   Updated Admin flow 	
--   Minor bug fixes
