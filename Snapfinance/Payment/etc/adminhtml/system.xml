@@ -19,18 +19,22 @@
                 <field id="client_id" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Stage Client Id</label>
                      <depends><field id="mode">stage</field></depends>
+                     <comment>Please input the valid Sandbox ID </comment>
                 </field>
                 <field id="client_secret" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Stage Client Secret</label>
                      <depends><field id="mode">stage</field></depends>
+                     <comment>Please input the valid Client Secret Sandbox Key </comment>
                 </field>
                  <field id="client_id_production" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Production Client Id</label>
                      <depends><field id="mode">production</field></depends>
+                     <comment>Please input the valid Production ID </comment>
                 </field>
                 <field id="client_secret_production" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Production Client Secret</label>
                      <depends><field id="mode">production</field></depends>
+                     <comment>Please input the valid Client Secret Production Key </comment>
                 </field>
                 <field id="minimum_order_total" translate="label" type="text" sortOrder="88" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Minimum Order Total</label>
