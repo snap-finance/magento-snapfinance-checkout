@@ -13,7 +13,7 @@ class Mode implements \Magento\Framework\Option\ArrayInterface
         return array(
             array(
                 'value' => self::STAGE,
-                'label' => __('Stage')
+                'label' => __('Sandbox')
             ),
             array(
                 'value' => self::PRODUCTION,

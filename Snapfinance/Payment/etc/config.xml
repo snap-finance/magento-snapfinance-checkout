@@ -5,7 +5,7 @@
             <snap_payment>
                 <active>0</active>
                 <model>Snapfinance\Payment\Model\PaymentMethod</model>
-                <title>Snap Payment</title>
+                <title>Snap Finance Checkout</title>
                 <mode>stage</mode>
                 <button_color>dark</button_color>
                 <button_shape>rect</button_shape>

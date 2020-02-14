@@ -17,12 +17,12 @@
                      <source_model>Snapfinance\Payment\Model\Config\Source\Mode</source_model>
                 </field>
                 <field id="client_id" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
-                    <label>Stage Client Id</label>
+                    <label>Sandbox Client Id</label>
                      <depends><field id="mode">stage</field></depends>
                      <comment>Please input the valid Sandbox ID </comment>
                 </field>
                 <field id="client_secret" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
-                    <label>Stage Client Secret</label>
+                    <label>Sandbox Client Secret</label>
                      <depends><field id="mode">stage</field></depends>
                      <comment>Please input the valid Client Secret Sandbox Key </comment>
                 </field>

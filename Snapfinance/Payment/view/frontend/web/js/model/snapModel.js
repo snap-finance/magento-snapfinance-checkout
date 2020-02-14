@@ -23,7 +23,6 @@ define([
             this.setOrderId(orderId);
             this.prepareItems();
             this.prepareTotals();
-            console.log(_self.orderId);
             return {
                 products: _self.products,
                 orderId: _self.orderId,
@@ -42,7 +41,6 @@ define([
         prepareItems: function() {
             var quoteItems = quote.getItems();
             for (var i=0; i < quoteItems.length; i++) {
-                console.log(quoteItems);
                 this.products.push({
                     productId : quoteItems[i].name,
                     description : quoteItems[i].sku,
@@ -171,8 +169,14 @@ define([
             result["homeAddress"] = {
                 streetAddress: street,
                 city: address.city,
-                state: "UT",
+                state: address.regionCode,
                 zipCode: address.postcode
+            }
+            if(address.regionCode != undefined)
+            {
+                result["homeAddress"].state = address.regionCode;
+            }else{
+                result["homeAddress"].state = address.region;
             }
             return result;
         },

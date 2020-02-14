@@ -20,7 +20,6 @@ define(
                 },
                 initialize: function () {
                     var _self = this;
-                    console.log(window.checkoutConfig.payment['snap_payment']);
                     this.messageContainer = new Messages();
                     this._super();
                 },
@@ -30,17 +29,13 @@ define(
                 initObservable: function () {
                     var _self = this;
                     this._super();
-                    
-                    console.log("initObservable");
                     quote.shippingAddress.subscribe(function (address) {
-                        console.log("shipping");
                         _self.RenderSnap();
                     });
                     return this;
                 },
                 RenderSnapMark : function()
                 {
-                    console.log(window.checkoutConfig.payment['snap_payment']);
                     snap.checkoutMark({
                         style: {
                             color: 'dark',
@@ -51,7 +46,6 @@ define(
                 },
                 RenderSnap : function(){
                     var _self = this;
-                    console.log(document.getElementById("snap-checkout-button"));
                     $("#snap-checkout-button").empty();
                     var access_token = localStorage.getItem('snap_token');
                     var transaction = [];
@@ -61,8 +55,8 @@ define(
                             $.when(paymentAction(_self.messageContainer, {'method': _self.getCode()})).done(function() {
                                 var order_data = JSON.parse(response);
                                 transaction = snapModel.getData(order_data.order_increment_id);
-                                console.log(transaction,"transaction");
                                 snap.init(access_token);
+                                $("#snap-checkout-button").empty();
                                 snap.checkoutButton({
                                     // Merchant site developer supplies the JWT obtained through Auth0 authentication
                                     // token: get('token'),
@@ -73,47 +67,25 @@ define(
                                         shape: window.checkoutConfig.payment['snap_payment'].button_shape,
                                         height: window.checkoutConfig.payment['snap_payment'].button_height
                                     },
-                            
-                                    onInit(data, actions) {
-                                        // This method is invoked when the button is initialized.
-                                        // Merchant site developer should include the following code to validate the transaction.
-                                        // This will throw an error containing the validation error information.
-                                        console.log("onInit");
+                                    onInit: function (data, actions) {
                                         return actions.validateTransaction(transaction);
                                     },
-                            
-                                    onClick(data, actions) {
-                                        // alert('hello');
-                                        // This method is invoked upon click of the Snap Checkout button.
-                                        // Merchant site developer should include the following code to invoke checkout:
-                                        console.log("onClick");
+                                    onClick: function (data, actions) {
                                         return actions.launchCheckout(transaction);
                                     },
                             
-                                    onApproved(data, actions) {
-                                    var  applicationId = data.applicationId;
-                                    $.mage.redirect(success_url);
-                                        if(applicationId != '' || applicationId != undefined )
-                                        {
-                                            var success_url = window.checkoutConfig.payment['snap_payment'].snap_payment_url.success_url + "?application_id=" + applicationId;
-                                            $.mage.redirect(success_url);
-                                        }
-                                        //alert(data.applicationId);
-                                        // Or, invoke placeOrder immediately like this.
-                                        // return actions.placeOrder(data.applicationId).then(() => {
-                                        //         // Place Order was successful.
-                                        //         alert(`Successfully placed an order on application: ${data.applicationId}.`);
-                                        //         // Merchant site should close out the shopping cart and update the purchase status as complete.
-                                        //     })
-                                        //     .catch(error => {
-                                        //         // An error occured while placing the order
-                                        //         alert(`Place order failed for application: ${data.applicationId}.`)
-                                        //         console.log(`Snap reported error: ${error.message}.`)
-                                        //     });
+                                    onApproved: function (data, actions) {
+                                        var  applicationId = data.applicationId;
+                                        $.mage.redirect(success_url);
+                                            if(applicationId != '' || applicationId != undefined )
+                                            {
+                                                var success_url = window.checkoutConfig.payment['snap_payment'].snap_payment_url.success_url + "?application_id=" + applicationId;
+                                                $.mage.redirect(success_url);
+                                            }   
                                         console.log("onApproved");
                                     },
                             
-                                    onDenied(data, actions) {
+                                    onDenied: function (data, actions) {
                                         // Snap funding was denied (i.e. approval was less than shopping cart amount)
                                         // Snap will have notified the customer of this in a separate window.
                                         // The merchant site developer can include code here to respond with an appropriate user experience.
@@ -121,20 +93,20 @@ define(
                                         console.log("onDenied");
                                     },
                             
-                                    onCanceled(data, actions) {
+                                    onCanceled: function(data, actions) {
                                         // The user quit the snap funding process or it was otherwise cancelled.
                                         // The merchant site developer can include code here to respond with an appropriate user experience.
                                         $.mage.redirect(window.checkoutConfig.payment['snap_payment'].snap_payment_url.cancel_url);
                                         console.log("onCanceled");
                                     },
                             
-                                    onNotification(data, actions) {
+                                    onNotification: function (data, actions) {
                                         // Snap may invoke this method to provide status information to the merchant site.
                                         // Notifications are purely informational and do not require action by the merchant site.
                                         console.log("onNotification");
                                     },
                             
-                                    onError(data, actions) {
+                                    onError: function (data, actions) {
                                         // Snap will invoke this method to inform the merchant site of actionable errors.
                                         // The merchant site developer should include code to respond with an error-specific user experience.
                                         $.mage.redirect(window.checkoutConfig.payment['snap_payment'].snap_payment_url.cancel_url);

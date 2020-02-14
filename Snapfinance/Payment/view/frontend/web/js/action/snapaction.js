@@ -20,7 +20,6 @@ define([
                             serviceUrl
                         ).done(
                         function (response) {
-                            console.log(response);
                             if (response) {
                                 var res = JSON.parse(response);
                                 self.access_token = res.access_token;
