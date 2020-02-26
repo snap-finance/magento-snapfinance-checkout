@@ -15,12 +15,7 @@ define([
         initialize: function () {
             this._super();
             $.when(snapaction()).done(function(response){
-                console.log(response);
-                if (response) {
-                    
-                }
             }).fail(function(response){
-                console.log(response);
             });
         },
 
