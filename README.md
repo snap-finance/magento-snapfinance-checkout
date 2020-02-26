@@ -55,3 +55,9 @@ minutes​ ​ by​ ​ going​ ​ through​ ​ these​ ​ following​ �
 ### 1.0.0
 * Initial Release
 
+### 1.0.1
+* Error page auto-dismisses issue resolved when user tries to initiates checkout flow once merchant invokes snap support.
+* Attempting to checkout with snap on Magento, error appears briefly, then resets to order summary has been resolved.
+* Error page gets auto-dismisses issue resolved when user tries to initiates checkout flow once snap admin rotate Client secret of merchant.
+* Alice automatically navigates back to "Shipping" page from "Review & Payments" page and error page is not shown while proceeding checkout with STBS states has been resolved.
+* "Deny page" gets auto dismissed issue resolved after application gets deny.
