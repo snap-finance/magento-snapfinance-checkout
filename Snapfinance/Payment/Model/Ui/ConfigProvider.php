@@ -88,9 +88,8 @@ class ConfigProvider implements ConfigProviderInterface
             'payment' => array(
                 self::CODE => array(
                     'payment_code'=> self::CODE,
-                    'button_color'=> $this->helper->getButtonStyle('button_color'),
-                    'button_shape'=> $this->helper->getButtonStyle('button_shape'),
-                    'button_height'=> $this->helper->getButtonStyle('button_height'),
+                    'checkout_logo'=> $this->helper->getCheckoutLogo(),
+                    'checkout_button'=> $this->helper->getCheckoutButton(),
                     'snap_payment_url' => [
                         'success_url' => $this->urlBuilder
                                 ->getUrl('snap/payment/success', ['_secure' => true]),

@@ -17,10 +17,19 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     const KEY_CLIENT_SECRET_SANDBOX = 'payment/snap_payment/client_secret';
     const KEY_CLIENTKEY_PRODUCTION = 'payment/snap_payment/client_id_production';
     const KEY_CLIENT_SECRET_PRODUCTION = 'payment/snap_payment/client_secret_production';
+    const LOGO_STAGE = 'https://d2l11kwwuv5w27.cloudfront.net';
+    const LOGO_LIVE = 'https://snap-assets.snapfinance.com';
 
     public function __construct(Context $context)
     {
         parent::__construct($context);
+    }
+    public function isModuleEnable()
+    {
+        return  $this->scopeConfig->getValue(
+            'payment/snap_payment/active',
+            ScopeInterface::SCOPE_WEBSITE
+        );
     }
     public function GetClientID()
     {
@@ -75,5 +84,28 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
         return $this->scopeConfig->getValue('payment/snap_payment/mode', ScopeInterface::SCOPE_WEBSITE) == 'production' ? true :false;
     }
 
+    public function getCheckoutLogo(){
+        return $this->scopeConfig->getValue('payment/snap_payment/mode', ScopeInterface::SCOPE_WEBSITE) == 'production' ? 
+        $this->scopeConfig->getValue(
+            'payment/snap_payment/checkout_logo_production',
+            ScopeInterface::SCOPE_WEBSITE
+        ) :
+        $this->scopeConfig->getValue(
+            'payment/snap_payment/checkout_logo',
+            ScopeInterface::SCOPE_WEBSITE
+        );
+    }
+
+    public function getCheckoutButton(){
+        return $this->scopeConfig->getValue('payment/snap_payment/mode', ScopeInterface::SCOPE_WEBSITE) == 'production' ? 
+        $this->scopeConfig->getValue(
+            'payment/snap_payment/checkout_button_production',
+            ScopeInterface::SCOPE_WEBSITE
+        ) :
+        $this->scopeConfig->getValue(
+            'payment/snap_payment/checkout_button',
+            ScopeInterface::SCOPE_WEBSITE
+        );
+    }
 
 }

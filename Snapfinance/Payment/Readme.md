@@ -62,4 +62,7 @@ minutes​ ​ by​ ​ going​ ​ through​ ​ these​ ​ following​ �
 * Alice automatically navigates back to "Shipping" page from "Review & Payments" page and error page is not shown while proceeding checkout with STBS states has been resolved.
 * "Deny page" gets auto dismissed issue resolved after application gets deny.
 
-
+### 1.0.2
+* Added Dynamic banners
+* Send Email to snap Team when Activate/ Deactivate Plugin
+* Added Masking in client key and secret

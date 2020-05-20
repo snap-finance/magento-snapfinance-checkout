@@ -5,7 +5,9 @@
                class="radio"
                data-bind="attr: {'id': getCode()}, value: getCode(), checked: isChecked, click:selectPaymentMethod, visible: isRadioButtonVisible()"/>
         <label data-bind="attr: {'for': getCode()}" class="label">
-            <div id="snap-checkout-mark" afterRender="RenderSnapMark"></div>
+        <div id="snap-checkout-mark">
+            <img data-bind="attr: {'src': getCheckoutLogo()}" />
+        </div>
     </div>
     <div class="payment-method-content">
         <!-- ko foreach: getRegion('messages') -->
@@ -22,7 +24,12 @@
             <!--/ko-->
         </div>
         <div class="actions-toolbar">
-            <div id="snap-checkout-button" class="payment-button" afterRender="RenderSnap"></div>   
+            <div id="snap-checkout-button" class="payment-button" afterRender="RenderSnap" style="display: none">
+            </div>   
+            <div class="primary">
+                    <button type="button" class="snap_checkout"  data-bind="click:checkoutButton" ><img data-bind="attr: {'src': getCheckoutButton()}"/></button>
+            </div>
+            
         </div>
        
     </div>

@@ -26,7 +26,13 @@ define(
                 },
                 getCode: function () {
                     return window.checkoutConfig.payment['snap_payment'].payment_code;
-                },    
+                }, 
+                getCheckoutLogo: function() {
+                    return window.checkoutConfig.payment['snap_payment'].checkout_logo;
+                },
+                getCheckoutButton: function() {
+                    return window.checkoutConfig.payment['snap_payment'].checkout_button;
+                },   
                 initObservable: function () {
                     var _self = this;
                     this._super();
@@ -37,13 +43,21 @@ define(
                 },
                 RenderSnapMark : function()
                 {
-                    snap.checkoutMark({
+                   /*  snap.checkoutMark({
                         style: {
                             color: 'dark',
                             height: window.checkoutConfig.payment['snap_payment'].button_height
                         }
-                    }).render();
+                    }).render(); */
                     
+                },
+                RenderUrl : function()
+                {
+                    $(".snap_checkout").css("background-image", "url(" + window.checkoutConfig.payment['snap_payment'].checkout_button + ")");
+                },
+                checkoutButton : function(){
+                    var _self = this;console.log('called');
+                    $('#snap-checkout-button button').click();
                 },
                 RenderSnap : function(){
                     var _self = this;
@@ -63,11 +77,11 @@ define(
                                     // token: get('token'),
                                     //token: access_token,
                             
-                                    style: {
+                                    /* style: {
                                         color: window.checkoutConfig.payment['snap_payment'].button_color,
                                         shape: window.checkoutConfig.payment['snap_payment'].button_shape,
                                         height: window.checkoutConfig.payment['snap_payment'].button_height
-                                    },
+                                    }, */
                                     onInit: function (data, actions) {
                                         return actions.validateTransaction(transaction);
                                     },

@@ -16,25 +16,49 @@
                     <label>Mode</label>
                      <source_model>Snapfinance\Payment\Model\Config\Source\Mode</source_model>
                 </field>
-                <field id="client_id" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                <field id="client_id" translate="label" type="password" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Sandbox Client Id</label>
                      <depends><field id="mode">stage</field></depends>
                      <comment>Please input the valid Sandbox ID </comment>
                 </field>
-                <field id="client_secret" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                <field id="client_secret" translate="label" type="password" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Sandbox Client Secret</label>
                      <depends><field id="mode">stage</field></depends>
                      <comment>Please input the valid Client Secret Sandbox Key </comment>
                 </field>
-                 <field id="client_id_production" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                 <field id="client_id_production" translate="label" type="password" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Production Client Id</label>
                      <depends><field id="mode">production</field></depends>
                      <comment>Please input the valid Production ID </comment>
                 </field>
-                <field id="client_secret_production" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                <field id="client_secret_production" translate="label" type="password" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Production Client Secret</label>
                      <depends><field id="mode">production</field></depends>
                      <comment>Please input the valid Client Secret Production Key </comment>
+                </field>
+                <field id="checkout_button" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Sandbox Checkout Button Color</label>
+                    <depends><field id="mode">stage</field></depends>
+                    <frontend_model>Snapfinance\Payment\Block\System\Config\CheckoutButton</frontend_model>
+                    <source_model>Snapfinance\Payment\Model\Config\Source\CheckoutButton</source_model>
+                </field>
+                <field id="checkout_button_production" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Production Checkout Button Color</label>
+                    <depends><field id="mode">production</field></depends>
+                    <frontend_model>Snapfinance\Payment\Block\System\Config\CheckoutButton</frontend_model>
+                    <source_model>Snapfinance\Payment\Model\Config\Source\ProductionCheckoutButton</source_model>
+                </field>
+                <field id="checkout_logo" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Sandbox Checkout Logo</label>
+                    <depends><field id="mode">stage</field></depends>
+                    <frontend_model>Snapfinance\Payment\Block\System\Config\CheckoutLogo</frontend_model>
+                    <source_model>Snapfinance\Payment\Model\Config\Source\CheckoutLogo</source_model>
+                </field>
+                <field id="checkout_logo_production" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Production Checkout Logo</label>
+                    <depends><field id="mode">production</field></depends>
+                    <frontend_model>Snapfinance\Payment\Block\System\Config\CheckoutLogo</frontend_model>
+                    <source_model>Snapfinance\Payment\Model\Config\Source\ProductionCheckoutLogo</source_model>
                 </field>
                 <field id="minimum_order_total" translate="label" type="text" sortOrder="88" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Minimum Order Total</label>
@@ -43,18 +67,6 @@
                 <field id="maximum_order_total" translate="label" type="text" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Maximum Order Total</label>
                     <frontend_class>validated-number</frontend_class>
-                </field>
-                <field id="button_color" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
-                    <label>Checkout Button Color</label>
-                     <source_model>Snapfinance\Payment\Model\Config\Source\Color</source_model>
-                </field>
-                <field id="button_shape" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
-                    <label>Checkout Button Shape</label>
-                     <source_model>Snapfinance\Payment\Model\Config\Source\Shape</source_model>
-                </field>
-                <field id="button_height" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
-                    <label>Checkout Button Height</label>
-                    <source_model>Snapfinance\Payment\Model\Config\Source\Height</source_model>
                 </field>
                 <field id="sort_order" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Sort Order</label>

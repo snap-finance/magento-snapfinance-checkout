@@ -8,5 +8,7 @@
     </type>
 
      <preference for="Snapfinance\Payment\Api\SnapCheckoutInterface" type="Snapfinance\Payment\Model\SnapCheckout" />
-
+    <type name="Magento\Config\Model\Config">
+        <plugin name="admin_system_config_save_plugin" type="Snapfinance\Payment\Plugin\ConfigPlugin" sortOrder="1"/>
+    </type>
 </config>
