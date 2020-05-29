@@ -85,7 +85,7 @@ class ConfigPlugin
         }
         }
         
-        // your custom logic
+        //
         return $proceed();
     }
 }
