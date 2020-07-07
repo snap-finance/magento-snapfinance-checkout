@@ -3,45 +3,17 @@
     padding: 10px;
     cursor: pointer;
 }
-.snap-learn-wrap {float: left;width: 479px;cursor: pointer;}
-.snap-learn-wrap .snap-learn-head {border: 1px solid #bebebe;border-radius: 7px;display: flex;justify-content: space-between;align-items: center;padding-right: 15px;margin-bottom: 20px;margin-top: 20px; overflow: hidden;}
-.snap-learn-head figure {width: 100px;position: relative;float: left;}
-.snap-learn-head figure::after {position: absolute;content: "";border-top: 46px solid transparent;border-left: 30px solid #173863;border-bottom: 0px solid transparent;right: 0;top: -1px;}
-.snap-learn-head p {font-size: 14px;color: #696561; margin-bottom: 0;}
-.snap-learn-wrap .btn-learn-more {background-color: #173863;color: #fff;border-radius: 30px;padding: 6.5px 20px 6.5px 20px;line-height: normal;font-size: 14px;font-weight: bold;}
-.snap-left-image img {float: left;}
-
-.snap-finance-modal {float: left;width: 100%;position: fixed;text-align: center;left: 0;right: 0;top: 0;bottom: 0;background-color: rgba(0,0,0,0.5);z-index: 9999;opacity: 0;visibility: hidden;pointer-events: none;padding: 0 15px;overflow-y: auto;-webkit-transition: all 0.2s ease-out;-ms-transition: all 0.2s ease-out;-moz-transition: all 0.2s ease-out;-o-transition: all 0.2s ease-out;transition: all 0.2s ease-out;}
-.snap-finance-modal.open {visibility: visible;pointer-events: auto;opacity: 1;}
-.snap-finance-modal .modal-wrap {width: 360px;margin: 30px auto;background-color: #fff;display: inline-block;border-radius: 20px;vertical-align: middle;max-width: 100%;}
-.modal-wrap .popup-header {padding: 25px;position: relative;float: right;}
-.popup-header .btn-close {position: absolute;right: 15px;top: 15px;}
-.modal-wrap .popup-body {text-align: left;padding: 0 30px 30px 30px;display: inline-block;}
-.popup-body figure {width: 100px;display: inline-block;margin-bottom: 30px;}
-.popup-body h4 {font-size: 18px;line-height: 24px;margin-bottom: 20px;color: #696561;margin-top: 0;}
-.finance-key-points {float: left;width: 100%;margin-bottom: 30px;padding-left: 0;list-style: none;}
-.finance-key-points li {position: relative;font-size: 14px;padding-left: 15px;line-height: 26px;color: #333;}
-.finance-key-points li::before {position: absolute;content: "";height: 5px;width: 5px;border-radius: 50%;display: inline-block;background-color: #173863;left: 0;top: 10px;}
-.popup-body .btn-apply {background-color: #173863;color: #fff;font-weight: bold;padding: 12px 20px;border-radius: 30px;font-size: 14px;float: right;}
-body,html{height: 100%;}
-.snap-finance-modal::before {content: "";display: inline-block;vertical-align: middle;height: 100%;margin-left: -4px;}
-* {-webkit-box-sizing: border-box;-ms-box-sizing: border-box;-moz-box-sizing: border-box;-o-box-sizing: border-box;box-sizing: border-box}
-.snap-payment-icon {
-    vertical-align: middle !important;
-    max-height: 42px;
-    max-width: 60px;
-    width: auto;
-    margin-top: -.3em;
+.blue-text{
+    color: #184e90;
 }
-
-.snap-banner-minicart-container{
+.text-center{
     text-align: center;
-    cursor: pointer;
 }
-.snap-banner-minicart{
-    width: 90px;
-    display: inline-block;
-    margin-top: 20px;
+.text-right{
+    text-align: right;
+}
+.popup-body img{
+    width: 100px;
 }
 .payment-method-title.field.choice {
     display: flex;
@@ -54,13 +26,4 @@ body,html{height: 100%;}
     background-color: transparent !important; 
     box-shadow: none !important;
     border: none !important;
-}
-@media only screen and (max-width: 480px){
-    /* ----- 1 ----- */
-    .snap-learn-wrap .snap-learn-head {flex-wrap: wrap;}
-    .snap-learn-head figure {width: auto;margin-bottom: 0;float: left;}
-    .snap-learn-head figure::after {left: 70px;}
-    .snap-learn-head p {font-size: 12px;width: 100px;margin-bottom: 0;margin-left: 38px;}
-    .snap-learn-wrap .btn-learn-more {margin-bottom: 0;font-size: 12px;padding: 6.5px 10px 6.5px 10px;}
-    .snap-learn-wrap {float: left;width: 100%;}
 }

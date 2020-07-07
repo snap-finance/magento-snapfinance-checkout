@@ -22,15 +22,15 @@
             <!-- ko foreach: $parent.getRegion('before-place-order') -->
                 <!-- ko template: getTemplate() --><!-- /ko -->
             <!--/ko-->
-        </div>
+        </div>        
         <div class="actions-toolbar">
-            <div id="snap-checkout-button" class="payment-button" afterRender="RenderSnap" style="display: none">
-            </div>   
-            <div class="primary">
-                    <button type="button" class="snap_checkout"  data-bind="click:checkoutButton" ><img data-bind="attr: {'src': getCheckoutButton()}"/></button>
+            <div id="snap-checkout-button" class="payment-button" afterRender="RenderSnap" style="display: none"></div>
+            <div class="snap-banner-checkout-container">
+                <a class="action primary" id="snap_checkout" data-bind="click:checkoutButton">
+                   <!-- ko i18n: 'Checkout With Snap'--><!-- /ko -->
+                </a>
             </div>
-            
         </div>
-       
+
     </div>
 </div>

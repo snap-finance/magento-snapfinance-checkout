@@ -17,7 +17,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     const KEY_CLIENT_SECRET_SANDBOX = 'payment/snap_payment/client_secret';
     const KEY_CLIENTKEY_PRODUCTION = 'payment/snap_payment/client_id_production';
     const KEY_CLIENT_SECRET_PRODUCTION = 'payment/snap_payment/client_secret_production';
-    const LOGO_STAGE = 'https://d2l11kwwuv5w27.cloudfront.net';
+    const LOGO_STAGE = 'https://snap-assets-dev-qa.snapfinance.com';
     const LOGO_LIVE = 'https://snap-assets.snapfinance.com';
 
     public function __construct(Context $context)

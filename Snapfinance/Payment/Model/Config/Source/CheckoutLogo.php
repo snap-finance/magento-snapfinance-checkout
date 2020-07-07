@@ -11,7 +11,7 @@ class CheckoutLogo implements \Magento\Framework\Option\ArrayInterface
 
 
    const URL_PATH  = 'checkout-option';
-   const LOGO_STAGE = 'https://d2l11kwwuv5w27.cloudfront.net/';
+   const LOGO_STAGE = 'https://snap-assets-dev-qa.snapfinance.com/';
 
     public function __construct(Parser $parser,Reader $reader)
     {

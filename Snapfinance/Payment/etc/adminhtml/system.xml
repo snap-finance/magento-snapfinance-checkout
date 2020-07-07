@@ -3,7 +3,7 @@
     <system>
         <section id="payment">
             <group id="snap_payment" translate="label" type="text" sortOrder="34" showInDefault="1" showInWebsite="1" showInStore="1">
-                <label>Snap Finance Checkout</label>
+                <label>Snap Finance</label>
                 <field id="version" translate="label" type="label" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Extension Version</label>
                     <frontend_model>Snapfinance\Payment\Block\System\Config\Version</frontend_model>
@@ -35,18 +35,6 @@
                     <label>Production Client Secret</label>
                      <depends><field id="mode">production</field></depends>
                      <comment>Please input the valid Client Secret Production Key </comment>
-                </field>
-                <field id="checkout_button" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
-                    <label>Sandbox Checkout Button Color</label>
-                    <depends><field id="mode">stage</field></depends>
-                    <frontend_model>Snapfinance\Payment\Block\System\Config\CheckoutButton</frontend_model>
-                    <source_model>Snapfinance\Payment\Model\Config\Source\CheckoutButton</source_model>
-                </field>
-                <field id="checkout_button_production" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
-                    <label>Production Checkout Button Color</label>
-                    <depends><field id="mode">production</field></depends>
-                    <frontend_model>Snapfinance\Payment\Block\System\Config\CheckoutButton</frontend_model>
-                    <source_model>Snapfinance\Payment\Model\Config\Source\ProductionCheckoutButton</source_model>
                 </field>
                 <field id="checkout_logo" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Sandbox Checkout Logo</label>

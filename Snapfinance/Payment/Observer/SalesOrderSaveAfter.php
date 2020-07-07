@@ -35,9 +35,9 @@ class SalesOrderSaveAfter implements ObserverInterface
         $order_id = $order->getId();
         $payment = $order->getPayment();
         $method = $payment->getMethodInstance();
-        $methodCode = $method->getCode();
+        $methodCode = $method->getCode();    
         if($order->getState() == "complete" && $methodCode == "snap_payment")
-        { 
+        {
             $order_id = $order->getId();
 
             $url = $this->helper->getAPIHost();
@@ -50,7 +50,7 @@ class SalesOrderSaveAfter implements ObserverInterface
             $this->curlClient->addHeader("Content-Type", "application/json");
             $this->curlClient->addHeader("Content-Length", strlen($params));
             $this->curlClient->post($url, $params);
-            $response = json_decode($this->curlClient->getBody(),true);
+            $response = json_decode($this->curlClient->getBody(),true);                   
             
             $transactions = $this->transactions->create()->addOrderIdFilter($order_id)->getFirstItem();
             $transactionId = $transactions->getData('txn_id');
@@ -59,25 +59,26 @@ class SalesOrderSaveAfter implements ObserverInterface
             
                 $url = $this->helper->getcompleteOrderAPI().$transactionId;
                 $ch = curl_init();
-                curl_setopt($ch, CURLOPT_URL,$url);
+                curl_setopt($ch, CURLOPT_URL, $url);
                 curl_setopt($ch, CURLOPT_POST, 1);
                 curl_setopt($ch, CURLOPT_FAILONERROR,1);
                 curl_setopt($ch, CURLOPT_HEADER,1);
                 curl_setopt($ch, CURLOPT_FOLLOWLOCATION,1);
-                curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
                 curl_setopt($ch, CURLOPT_TIMEOUT, 180);
+            	curl_setopt($ch, CURLOPT_POSTFIELDS, $params);
                 $header[] = 'Content-Type: application/json';
-                $header[] = "Authorization : Bearer ".$response['access_token'];
+                $header[] = "Authorization: Bearer ".$response['access_token'];
                 curl_setopt($ch, CURLOPT_HTTPHEADER,$header);
                 $retValue = curl_exec($ch);
                 $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
                 $error_msg = curl_error($ch);
                
-                $this->_logger->info('Snap_log', array($retValue)); 
-                $this->_logger->info('Snap_log', array($error_msg)); 
+                $this->_logger->info('Snap_log', array($retValue));
+                $this->_logger->info('Snap_log', array($error_msg));
                 curl_close($ch);
             } catch (LocalizedException $e) {
-               
+               $this->_logger->critical($e->getMessage());
             }
 
         }

@@ -1,19 +1,17 @@
 # Magento checkout plugin
 ## Description
 
-Snap Finance checkout provides eCommerce merchants with a set of APIs to offer an in-context finance option to their customers at the time of checkout. 
-The Snap JavaScript library, aka "snap-sdk (client)", is a script provided to eCommerce merchants as "snap-sdk.js", for inclusion in their website. The script enables the merchant to include a Snap Checkout button on their website, enabling their customers to use Snap to finance their online purchase.
+Snap Checkout provides eCommerce merchants with a flexible set of plugins for popular eCommerce platforms that provide an in-context finance option to their credit-challenged customers at the time of checkout.
 
 Snap Finance’s Magento checkout plugin offers an easy way to enable your Magento powered eCommerce store to offer Lease to Buy finance options.
 
 ## Installation
 
-1. Your​ ​ Magento​ ​Snap Finance Checkout extension​ can​ ​be​ ​installed​ ​in​ a few 
-minutes​ ​ by​ ​ going​ ​ through​ ​ these​ ​ following​ ​ steps
-    1. Download/purchase the Snap Finance Extension.
-    2. Unzip the file in temporary directory
-    3. Upload it to your app/code root directory.
-    4. After the successful installation you have to Enable module by:
+1. Install and Enable the Magento​ ​Snap Finance Extension​
+    1. Purchase and download the Snap Finance extension. <!--Will the user know where to purchase the extension?-->
+    2. Unzip the file in temporary directory.
+    3. Upload the file to your app/code root directory.
+    4. After installation, enable the module.
     	1. php bin/magento setup:upgrade
     	2. php bin/magento setup:di:compile
     	3. php bin/magento setup:static-content:deploy -f
@@ -21,31 +19,27 @@ minutes​ ​ by​ ​ going​ ​ through​ ​ these​ ​ following​ �
     	5. php bin/magento cache:flush
     	6. sudo chmod 777 -R var/ generated/ pub/static/
 
-2. Configure Plugin:- 
-	1. Login to Magento admin and open Magento Settings. 
-   	2. If you want to enable Snap finance checkout payment method follow the below the step:
-	      1. Open the Magento Store Configration
-	      2. Click on Sales tab then click on Payment Methods and then click on 'Snap Finance Checkout'.
-		  3. Enable/Disable – Select Yes to enable the module
-		  4. Mode-  “Sandbox” for sandbox/test operation and “Production” for live operation.
-		  5. Client ID – Enter Client ID which you will receive from your developer account on Snap Finance Website.
-	 	  6. Client Secret Key – Enter Client Secret Key which you will receive from your developer account on Snap Finance Website.
-	 	  7. Minimum Order total- set the minimum order value to use the Snap Finance Payment method.
-	 	  8. Maximum Order total- set the maximum order value to use the Snap Finacne Payment method.
-	 	  9. Checkout Button Color - set the button color dark or light
-		  10.Checkout Button Shape  - set the button style and shape
-		  11.Checkout Button Height - set the button height 
+2. Configure the Plugin
+	1. Log in to Magento admin and open Magento settings.
+   	2. Enable Snap Finance payment method.
+	      1. Open the Magento store configuration.
+	      2. Open the Sales tab. <!--Bold "Sales"-->
+		  3. Select Payment Methods and Snap Finance. <!--Bold "Payment Methods" and "Snap Finance"-->
+		  3. From the Enable/Disable option, select Yes to enable the module <!--Bold "Yes"-->
+		  4. From the Mode option, select "Sandbox�? for sandbox/test operation or “Production�? for live operation.
+		  5. In the Client ID field, enter the client ID found in your developer account on the Snap Finance website.
+	 	  6. In the Client Secret Key field, enter the Client Secret Key found in your developer account on the Snap Finance website.
+	 	  7. In the Minimum Order field, set the minimum order value to use with the Snap Finance payment method.
+	 	  8. In the Maximum Order field, set the maximum order value to use with the Snap Finance payment method.
+	 	  9. Set the Checkout Logo as dark or light.
 
+3. Clear Your Cache
+    	1. Run the command: php bin/magneto cache:flush
 
-3. After the Done all settings you have to run following command:
-    	1. php bin/magneto cache:flush	
-
-4. Order Complete Api Callback 
-	1. After processing order, merchant needs to complete order from Magento backend.
-	2. This process will call API - POST /v2/internal/application/complete/{applicationId}
-	3. This will get Application Status from Snap Finance.
+4. Order Complete API Callback 
+After processing an order, the merchant needs to complete the order from Magento back-end. This process calls the API - POST /v2/internal/application/complete/{applicationId} to retrieve the application status from Snap Finance.
 	
-**Note** Always keep a backup of your existing Magento installation including Mysql Database, before installing a new plugin.
+**Note** Always store a backup of your existing Magento installation, including the Mysql database, before installing a new plugin.
 
 ## Frequently Asked Questions
 
@@ -66,3 +60,9 @@ minutes​ ​ by​ ​ going​ ​ through​ ​ these​ ​ following​ �
 * Added Dynamic banners
 * Send Email to snap Team when Activate/ Deactivate Plugin
 * Added Masking in client key and secret
+
+### 1.0.3
+* Updated Readme.md File
+* Changed the 'Snap Finance Checkout' to 'Snap Finance' in Admin Configuration and removed the checkout graphic image from checkout button.
+* Resolved the issue for set the 'Pending Delivery' status in merchant account once the order status made as completed from admin side.
+* Changed the Sandbox Checkout Logo URL for S3 bucket
