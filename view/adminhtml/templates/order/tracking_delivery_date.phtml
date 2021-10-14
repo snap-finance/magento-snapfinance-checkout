@@ -1,0 +1,29 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+?>
+
+<section class="admin__page-section delivery-date">
+    <div class="admin__page-section-title">
+        <span class="title"><?= $block->escapeHtml(__('Expected Delivery Date')) ?></span>
+    </div>
+    <div class="admin__page-section-content">
+        <div class="admin__page-section-item-title" style="float:left;">
+            <span class=""><?= $block->escapeHtml(__('Snap classifies the order as complete after it is delivered.')) ?></span><br/>
+            <span class=""><?= $block->escapeHtml(__('Indicate the approximate delivery date of the order per your generated shipping information.')) ?></span>
+        </div>
+        <div class="admin__field-control required" style="float:left; padding-left: 50px;">
+            <input type="text" class="input-text" id="delivery_date" style="width: auto" name="delivery_date" autocomplete="off" />
+        </div>
+    </div>
+</section>
+<script>
+    require([
+        'jquery',
+        'delivery_date_customjs'
+    ], function ($, script) {
+
+    });
+</script>

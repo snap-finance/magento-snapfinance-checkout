@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="extra_shipment_info">
+            <block class="Snapfinance\Payment\Block\Adminhtml\Order\TrackingDeliveryDate" name="order_shipment_block_view" template="Snapfinance_Payment::order/tracking_delivery_date.phtml" />
+        </referenceContainer>
+    </body>
+</page>

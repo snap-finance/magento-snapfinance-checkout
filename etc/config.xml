@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <payment>
+            <snap_payment>
+                <active>0</active>
+                <model>Snapfinance\Payment\Model\PaymentMethod</model>
+                <title>Snap Finance Checkout</title>
+                <mode>stage</mode>
+                <minimum_order_total>0.01</minimum_order_total>
+                <maximum_order_total>10000</maximum_order_total>
+            </snap_payment>
+        </payment>
+    </default>
+</config>

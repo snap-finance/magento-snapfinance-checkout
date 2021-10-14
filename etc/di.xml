@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+     <type name="Snapfinance\Payment\Model\Config">
+        <arguments>
+            <argument name="methodCode" xsi:type="const">Snapfinance\Payment\Model\Ui\ConfigProvider::CODE</argument>
+        </arguments>
+    </type>
+
+    <preference for="Snapfinance\Payment\Api\SnapCheckoutInterface" type="Snapfinance\Payment\Model\SnapCheckout" />
+    <type name="Magento\Config\Model\Config">
+        <plugin name="admin_system_config_save_plugin" type="Snapfinance\Payment\Plugin\ConfigPlugin" sortOrder="1"/>
+    </type>
+    
+    <type name="Magento\Shipping\Controller\Adminhtml\Order\Shipment\Save">
+        <plugin name="shipment_save_order" type="Snapfinance\Payment\Plugin\ShipmentSavePlugin" sortOrder="10"/>
+    </type>
+    
+    <virtualType name="Magento\Sales\Model\ResourceModel\Order\Grid" type="Magento\Sales\Model\ResourceModel\Grid">
+        <arguments>
+            <argument name="columns" xsi:type="array">
+                <item name="delivery_date" xsi:type="string">sales_order.delivery_date</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    
+    <type name="Snapfinance\Payment\Logger\Handler">
+        <arguments>
+            <argument name="filesystem" xsi:type="object">Magento\Framework\Filesystem\Driver\File</argument>
+        </arguments>
+    </type>
+    <type name="Snapfinance\Payment\Logger\Logger">
+        <arguments>
+            <argument name="name" xsi:type="string">Logger</argument>
+            <argument name="handlers"  xsi:type="array">
+                <item name="system" xsi:type="object">Snapfinance\Payment\Logger\Handler</item>
+            </argument>
+        </arguments>
+    </type>
+                 
+</config>

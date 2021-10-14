@@ -1,0 +1,50 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+?>
+<?php $order = $block->getOrder() ?>
+<?php
+if ($order->getIsVirtual()) :
+    return '';
+endif;
+?>
+
+<?php /* Shipping Method */ ?>
+<?php if ($order->getDeliveryDate() != '0000-00-00'): ?>
+    <form name="form_delivery_date_value" method="POST" id="form_delivery_date_value">
+        <section class="admin__page-section delivery-date">
+            <div class="admin__page-section-title">
+                <span class="title"><?= $block->escapeHtml(__('Expected Delivery Date')) ?></span>
+            </div>
+            <div class="admin__page-section-content">
+                <div class="admin__page-section-item-title">
+                    <span class=""><?= $block->escapeHtml(__('Snap classifies the order as complete after it is delivered.')) ?></span><br/>
+                    <span class=""><?= $block->escapeHtml(__('Indicate the approximate delivery date of the order per your generated shipping information.')) ?></span>
+                </div>
+                <div class="admin__field-control">
+                    <input type="text" class="input-text" id="delivery_date" style="width: auto" name="delivery_date" autocomplete="off" value="<?= date("m/d/Y", strtotime($order->getDeliveryDate())); ?>" />
+                </div>
+                <div class="div_btn_delivery_date"><input type="submit" id="submit_delivery_date" name="delivery-date-submit" value="Update Delivery Date" class="action-default scalable action-save action-secondary">
+                    <input type="hidden" id="order_id" name="order_id" value="<?= $order->getId(); ?>">
+                    <input type="hidden" id="ajax_updatedeliverydate_url" name="ajax_updatedeliverydate_url" value="<?php echo $block->getUrl('snapfinance/updatedeliverydate/'); ?>">
+                </div>
+            </div>
+            <div class="message message-success success" style="display:none;"><div class="ajax_message_success" data-ui-id="messages-message-success"></div></div>
+            <div class="message message-error error" style="display:none;"><div class="ajax_message_error" data-ui-id="messages-message-error"></div></div>
+
+
+        </section>
+    </form>
+<?php endif; ?>
+
+<script>
+    require([
+        'jquery',
+        'delivery_date_customjs'
+    ], function ($, script) {
+
+    });
+</script>
+
