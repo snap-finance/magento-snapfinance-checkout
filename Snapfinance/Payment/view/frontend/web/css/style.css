@@ -27,3 +27,8 @@
     box-shadow: none !important;
     border: none !important;
 }
+.text-pay-with-snap{
+    float: right;
+    clear: both;
+    line-height: 2;
+}

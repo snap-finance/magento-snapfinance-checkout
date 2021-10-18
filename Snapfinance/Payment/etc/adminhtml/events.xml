@@ -5,5 +5,5 @@
     <event name="sales_order_save_after">
         <observer name="snap_sales_order_save_after"
                   instance="Snapfinance\Payment\Observer\SalesOrderSaveAfter" />
-    </event>
+    </event>    
 </config>

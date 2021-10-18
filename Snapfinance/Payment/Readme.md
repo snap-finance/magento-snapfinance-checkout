@@ -26,7 +26,7 @@ Snap Financeâ€™s Magento checkout plugin offers an easy way to enable your Magen
 	      2. Open the Sales tab. <!--Bold "Sales"-->
 		  3. Select Payment Methods and Snap Finance. <!--Bold "Payment Methods" and "Snap Finance"-->
 		  3. From the Enable/Disable option, select Yes to enable the module <!--Bold "Yes"-->
-		  4. From the Mode option, select "Sandboxï¿½? for sandbox/test operation or â€œProductionï¿½? for live operation.
+		  4. From the Mode option, select "Sandbox” for sandbox/test operation or â€œProduction” for live operation.
 		  5. In the Client ID field, enter the client ID found in your developer account on the Snap Finance website.
 	 	  6. In the Client Secret Key field, enter the Client Secret Key found in your developer account on the Snap Finance website.
 	 	  7. In the Minimum Order field, set the minimum order value to use with the Snap Finance payment method.
@@ -66,3 +66,12 @@ After processing an order, the merchant needs to complete the order from Magento
 * Changed the 'Snap Finance Checkout' to 'Snap Finance' in Admin Configuration and removed the checkout graphic image from checkout button.
 * Resolved the issue for set the 'Pending Delivery' status in merchant account once the order status made as completed from admin side.
 * Changed the Sandbox Checkout Logo URL for S3 bucket
+
+### 1.0.4
+* Changed the production URL to get token
+* Enabled the option for merchants to send the Shipping amount as a separate line
+
+### 2.0.0
+* Added the expected delivery date in shipping section. Snap classifies the order as complete after it is delivered.
+* Updated the text changes on front checkout page in snap checkout section.
+* Removed the payment method checkout button color, checkout button shape, checkout height dropdown from configuration section.

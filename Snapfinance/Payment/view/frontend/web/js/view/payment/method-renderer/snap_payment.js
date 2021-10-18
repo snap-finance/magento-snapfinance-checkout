@@ -70,20 +70,21 @@ define(
                             $.when(paymentAction(_self.messageContainer, {'method': _self.getCode()})).done(function() {
                                 var order_data = JSON.parse(response);
                                 transaction = snapModel.getData(order_data.order_increment_id);
+                                
+                                var transJSON = JSON.stringify(transaction);
+                                console.log('Transaction:'+transJSON);
+
                                 snap.init(access_token);
                                 $("#snap-checkout-button").empty();
                                 snap.checkoutButton({
-                                    // Merchant site developer supplies the JWT obtained through Auth0 authentication
-                                    // token: get('token'),
-                                    //token: access_token,
-                            
+                                    // Merchant site developer supplies the JWT obtained through Auth0 authentication                            
                                     /* style: {
                                         color: window.checkoutConfig.payment['snap_payment'].button_color,
                                         shape: window.checkoutConfig.payment['snap_payment'].button_shape,
                                         height: window.checkoutConfig.payment['snap_payment'].button_height
                                     }, */
                                     onInit: function (data, actions) {
-                                        return actions.validateTransaction(transaction);
+                                        return transaction;
                                     },
                                     onClick: function (data, actions) {
                                         return actions.launchCheckout(transaction);

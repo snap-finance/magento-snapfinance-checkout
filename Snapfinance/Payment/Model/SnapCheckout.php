@@ -73,7 +73,7 @@ class SnapCheckout implements SnapCheckoutInterface
      * @return bool|string
      */
     public function initPayment()
-    {
+    {              
         // collection totals before submit
         $this->quote->collectTotals();
         $this->quote->reserveOrderId();
@@ -97,8 +97,14 @@ class SnapCheckout implements SnapCheckoutInterface
             $this->quoteRepository->save($this->quote);
             $response['order_increment_id'] = $orderIncrementId;
         }
-       
-       
+        
+        //Set the shipping amount in cart response
+    	if($this->quote->getShippingAddress()->getShippingAmount()){
+    		$response['shippingAmount'] = $this->quote->getShippingAddress()->getShippingAmount();
+        }else{
+    	    $response['shippingAmount'] = 0;
+        }
+        
         return json_encode($response);
     }
 }

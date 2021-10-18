@@ -1,3 +1,8 @@
 tr#row_snap_general_logo_style label img {
     width: 60px;
 }
+#submit_delivery_date{ background-color: #514943; border-color: #514943; color: #ffffff; text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);}
+.div_btn_delivery_date{ float: left; margin-left: 30px;}
+.admin__field-control {float:left;}
+.ajax_message_success{clear: both;}
+.ajax_message_error{clear: both;}

@@ -377,20 +377,6 @@
                                 })
                             })
                         })
-                    }, t.prototype.validateTransaction = function(t) {
-                        return r(this, void 0, Promise, function() {
-                            var e = this;
-                            return a(this, function(n) {
-                                return [2, this._validate(t).then(function(t) {
-                                    if (t.shoppingCart.validationResult !== o.SUCCESS) {
-                                        var n = "Validation Errors: " + JSON.stringify(t.shoppingCart.validationErrors),
-                                            r = new i.ErrorMessage(i.ErrorType.ValidationError, n);
-                                        throw e._handleMessage(r), new Error(n)
-                                    }
-                                    e._handleMessage(new i.NotificationMessage(i.NotificationType.Validated, "Snap checkout transaction validation succeeded."))
-                                })]
-                            })
-                        })
                     }, t.prototype._validate = function(t) {
                         return r(this, void 0, Promise, function() {
                             var e, n = this;
@@ -498,11 +484,11 @@
                         }
                     }, t._endpoints = {
                         dev: {
-                            snap: "https://api-qa.snapfinance.com/v2/internal",
+                            snap: "https://api-stable.snapfinance.com/platform/v1",
                             apply: "https://qa15-apply.snapfinance.com"
                         },
                         sandbox: {
-                            snap: "https://api-sandbox.snapfinance.com/v2/internal",
+                            snap: "https://api-stable.snapfinance.com/platform/v1",
                             apply: "https://apply-sandbox.snapfinance.com"
                         },
                         prod: {

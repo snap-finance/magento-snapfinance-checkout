@@ -20,7 +20,8 @@ class ShipmentSavePlugin {
             \Magento\Framework\HTTP\Adapter\CurlFactory $curlFactory,
             \Magento\Framework\Json\Helper\Data $jsonHelper,
             \Snapfinance\Payment\Logger\Logger $logger,
-            \Snapfinance\Payment\Logger\Handler $handler
+            \Snapfinance\Payment\Logger\Handler $handler,
+            \Magento\Sales\Api\OrderRepositoryInterface $orderRepository
     ) {
         $this->resultRedirectFactory = $resultRedirectFactory;
         $this->messageManager = $ManagerInterface;
@@ -30,10 +31,26 @@ class ShipmentSavePlugin {
         $this->curlFactory = $curlFactory;
         $this->jsonHelper = $jsonHelper;
         $this->_logger = $logger;
+        $this->orderRepository = $orderRepository;
         $handler->seturl(self::LOGGER_DIR_NAME); //Set the Directory name for logger
     }
 
     public function aroundExecute(\Magento\Shipping\Controller\Adminhtml\Order\Shipment\Save $subject, callable $proceed) {
+    
+        if ( !$this->helper->isModuleEnable() ||  $this->helper->isModuleEnable() ==0) {
+            return $proceed();
+        }
+    
+         //Get the order id from param value
+        $order_id = $subject->getRequest()->getParam('order_id');
+  
+        $order = $this->orderRepository->get($order_id);
+        $payment = $order->getPayment();
+        $method = $payment->getMethodInstance();
+        if( $method->getCode()  != 'snap_payment' ){
+                return $proceed();
+        }
+    
         $resultRedirect = $this->resultRedirectFactory->create();
         $data_delivery_date = $subject->getRequest()->getParam('delivery_date');
 
@@ -41,11 +58,11 @@ class ShipmentSavePlugin {
             if ($data_delivery_date == "") {
                 $this->messageManager->addError(__("Expected delivery date cannot be blank."));
                 //Return the blank message
-                return $resultRedirect->setPath('*/*/new', ['order_id' => $subject->getRequest()->getParam('order_id')]);
+                return $resultRedirect->setPath('*/*/new', ['order_id' => $order_id]);
             } elseif ($data_delivery_date != "" && $data_delivery_date != "0000-00-00") {
 
-                //Get the order id from param value
-                $order_id = $subject->getRequest()->getParam('order_id');
+                
+               // $order_id = $subject->getRequest()->getParam('order_id');
 
                 $url = $this->helper->getAPIHost();
                 $data = array('client_id' => $this->helper->GetClientID(),

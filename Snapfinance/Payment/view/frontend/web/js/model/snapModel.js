@@ -23,15 +23,34 @@ define([
             this.setOrderId(orderId);
             this.prepareItems();
             this.prepareTotals();
+            
+            var shipping_address = $.parseJSON(JSON.stringify(this.shippingAddress()));                        
+                        
+            //Condition for the shipping amount not null and exist
+            var _shippingAmount = (_self.shippingAmount !== 'undefined' && _self.shippingAmount !='') ? parseFloat(_self.shippingAmount).toFixed(2) : "0.00";
+            var _discountAmount = (_self.discounts !== 'undefined' && _self.discounts != null && _self.discounts != '') ? parseFloat(_self.discounts * -1).toFixed(2)  : "0.00";
+            var _taxAmount = (_self.taxAmount !== 'undefined' && _self.taxAmount != null && _self.taxAmount != '') ? parseFloat(_self.taxAmount).toFixed(2) : "0.00";
+        	var _totalAmount = (_self.totalAmount !== 'undefined' && _self.totalAmount != null && _self.totalAmount != '') ? parseFloat(_self.totalAmount).toFixed(2) : "0.00";
+        
             return {
-                products: _self.products,
-                orderId: _self.orderId,
-                //shipping_amount: _self.shippingAmount,
-                taxAmount: _self.taxAmount,
-                totalAmount: _self.totalAmount,
-                customer: _self.shippingAddress('shipping')
-              /*   billing: _self.prepareAddress('billing'),
-                discounts: _self.discounts */
+                    "cartInformation": {
+                        "currencyCode": ""+_self.base_currency_code+"",
+                        "taxAmount": ""+_taxAmount+"",
+                        "shippingAmount": ""+_shippingAmount+"",
+                        "totalAmount": ""+_totalAmount+"",
+                        "discountAmount": ""+_discountAmount+"",
+                        "orderId": ""+_self.orderId+"",
+                        "items": _self.products,
+                        
+                        "shippingAddress": {
+                                "streetAddress": shipping_address.homeAddress.streetAddress,
+                                "city": shipping_address.homeAddress.city,
+                                "state": shipping_address.homeAddress.state,
+                                "country": shipping_address.homeAddress.countryId,
+                                "postalCode": shipping_address.homeAddress.zipCode,
+                                "unit": ""
+                            }
+                    }
             }
         },
 
@@ -39,13 +58,18 @@ define([
          * Prepare items data
          */
         prepareItems: function() {
-            var quoteItems = quote.getItems();
+            var quoteItems = quote.getItems();            
+            //console.log('quote_Item::'+JSON.stringify(quoteItems));            
+	    this.products = [];
             for (var i=0; i < quoteItems.length; i++) {
+                var item_price = quoteItems[i].price;                
                 this.products.push({
-                    productId : quoteItems[i].name,
-                    description : quoteItems[i].sku,
-                    price : quoteItems[i].price,
-                    quantity : quoteItems[i].qty,
+                    itemId : ""+quoteItems[i].item_id+"",
+                    price : ""+parseFloat(item_price).toFixed(2)+"",
+                    description : ""+quoteItems[i].name+"",
+                    sku: ""+quoteItems[i].sku+"",
+                    quantity: quoteItems[i].qty,
+                    leasable: true                    
                 });
             }
         },
@@ -68,10 +92,12 @@ define([
             var totals = quote.getTotals()();
            /*  this.shippingAmount = this.convertPriceToCents(totals.base_shipping_amount);
             this.totalAmount = this.convertPriceToCents(totals.base_grand_total);
-            this.taxAmount = this.convertPriceToCents(totals.base_tax_amount); */
+            this.taxAmount = this.convertPriceToCents(totals.base_tax_amount); */        	
             this.shippingAmount = totals.base_shipping_amount;
             this.totalAmount = totals.base_grand_total;
             this.taxAmount = totals.base_tax_amount;
+            this.base_currency_code = totals.base_currency_code;
+        	this.discounts = totals.discount_amount;
         },
 
         /**
@@ -133,13 +159,13 @@ define([
             }
             return result;
         },
+        
         shippingAddress: function(type) {
             var name, address, fullname, street, result = {};
-            if (type == 'shipping') {
-                address = quote.shippingAddress();
-            } else if (type == 'billing') {
-                address = quote.billingAddress();
-            }
+                        
+            console.log('Shipping Address::'+ JSON.stringify(quote.shippingAddress()) );
+            address = $.parseJSON(JSON.stringify(quote.shippingAddress()));
+            
             if (address.lastname) {
                 fullname = address.firstname + ' ' + address.lastname;
             } else {
@@ -152,7 +178,6 @@ define([
                 street = address.street[0];
             }
            
-
             result["firstName"] = address.firstname;
             result["lastName"] = address.lastname;
             if (address.street[1]) {
@@ -170,7 +195,8 @@ define([
                 streetAddress: street,
                 city: address.city,
                 state: address.regionCode,
-                zipCode: address.postcode
+                zipCode: address.postcode,
+                countryId: address.countryId
             }
             if(address.regionCode != undefined)
             {
@@ -187,6 +213,7 @@ define([
          * @param data
          */
         prepareOrderData: function(data) {
+        	console.log('Order_Discount'+data.discounts);
             if (data.order_increment_id !== 'undefined') {
                 this.orderId = data.order_increment_id;
             }
